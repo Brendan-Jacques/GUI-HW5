@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+ Name: Brendan Jacques, brendan_jacques@student.uml.edu
+ Student - Computer Science Major, UMass Lowell
+ Comp.4610, GUI Programming I
+ File: /usr/cs/2018/bjacques/public_html/461f2017/hw5/hw5.html
+ Created: 14-November-2017
+-->
+<html>
+  <head>
+    <title>
+      Assignment 5
+    </title>
+    <link rel="stylesheet" type="text/css" href="./css/hw5.css">
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./jquery-validate/dist/jquery.validate.js"></script>
+  </head>
+  <body>
+    <h1>
+      <b>Assignment 5</b>
+    </h1>
+    <div class="center">
+      <form id="car-number" onsubmit="field_generate()">
+      	<div>How many cars do you want to compare? : <input id="input_field_num" name="input_field_num" type="number"></div>
+        <div><input type="submit" value="Submit"></div>
+      </form>
+      <form id="car-compare-data" onsubmit="table_compute()">
+        <p id="note1" class="note">*Please fill in all required fields.</p>
+      	<table id="defaults" class="defaults">
+        	<tr>
+        		<td>*Price per Gallon:</td> 
+        		<td><input id="per_gallon" name="per_gallon" type='number'/></td>
+        	</tr>
+        	<tr>
+        		<td>*Expected Miles Per Month:</td> 
+        		<td><input id="miles_per_month" name="miles_per_month" type='number'/></td>
+        	</tr>
+        </table>
+       	<p id="note2" class="note">If "Price per Gallon" or "Expected Miles" are not given values, they will default to 0.</p>
+        <table id="fields"></table>
+        <p id="note3" class="note">Note: If any information given about a car is missing or incorrect, that car's data will not appear on the table.<br /></p>
+        <input type="submit" value="Submit" id="submit" class="submit" />
+      </form>
+      <table id="results" class="results">
+        <!-- Sample Row that table_compute will make
+		<tr>
+			<td>"+ mpg_current  +"</td>
+			<td>($/mo, $/mi)11</td> (Duplicate for # of prices given).
+		</tr>
+         -->
+        <!-- <span id="test"></span> */ -->
+      </table>
+    </div>
+    <script src="./js/hw5.js"></script>
+    <script src="./js/validation-hw5.js"></script>
+  </body>
+</html>
