@@ -7,6 +7,7 @@
 */
 
 $("document").ready(function() {
+	/* Validation info for the #car-number form */
 	$("#car-number").validate({
 		rules: {
 			input_field_num: {
@@ -24,6 +25,13 @@ $("document").ready(function() {
 			}
 		}
 	});
+	/* Validation info for the #car-compare-data form.
+	   This form is the primary user-input form.
+	   This info does not include rules for the user-inserted
+	   car information because the number of cars being compared
+	   is dynamic. As such, the rules for each car are inserted
+	   when the input elements for each car are created in field_generate().
+	 */
 	$("#car-compare-data").validate({
 		rules: {
 			per_gallon: {
@@ -44,6 +52,7 @@ $("document").ready(function() {
 			miles_per_month: "*Please enter value greater than 0."
 		},
 	});
+	/* Prevents the page from refreshing upon form submit */
 	$("#car-number").submit(function(e) {
 		e.preventDefault();
 	});

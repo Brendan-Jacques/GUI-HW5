@@ -41,6 +41,8 @@ function table_compute() {
 	//3) Every number value is greater than or equal to zero.
 	//4) The car's price is above $2000 (due to the common sense that no car would be sold for less than that.)
 	for(i = 1; i <= input_fields; i++) {
+		//Checks with the validation info given in validation-hw5.js to see if the car info given by the user is valid.
+		//If it is, continue. if it isn't, skip to the next car's info.
 		if(($("#price"+ i).valid()) && ($("#mpg"+ i).valid()) && ($("#insurance"+ i).valid()) && ($("#maintenance"+ i).valid())) {
 			current_p = document.getElementById("price"+ i).value;
 			current_m = document.getElementById("mpg" + i).value;
@@ -166,8 +168,9 @@ function table_compute() {
 
 //Creates a # of html form lines to account for the # of fields given in input_field_num.
 function field_generate() {
-	//input_fields: The number of input fields requested by the user.
+	//Checks to see if the info submitted by the user is valid based on the info given in validation-hw5.js. If it is, continue.
 	if($("#car-number").valid()) {
+		//input_fields: The number of input fields requested by the user.
 		var input_fields = document.getElementById("input_field_num").value;
 		var i = +1;
 		var blank = "";
@@ -179,6 +182,7 @@ function field_generate() {
 			//For each input field requested, insert the html for one input field into hw4.html.
 			new_field = "<tbody class='field'><tr><th>Car "+ i +":</th><th>Insert Values Below</th></tr><tr><td>Price:</td><td> <input id='price"+ i + "' name='price"+ i +"' type='number'/></td></tr><tr><td>Miles Per Gallon:</td><td><input id='mpg" + i + "' name='mpg"+ i +"' type='number'/></td></tr><tr><td>Insurance Cost Per Month:</td><td><input id='insurance" + i + "' name='insurance"+ i +"' type='number'/></td></tr><tr><td>Maintenance Cost Per Month:</td><td><input id='maintenance" + i + "' name='maintenance" + i + "' type='number'/></td></tr></tbody>";
 			document.getElementById("fields").innerHTML += new_field;
+			//Add validation rules for each new input element that was just inserted into the html.
 			$("#price"+ i +"").rules("add", {
 				required: true,
 				min: 2000,
@@ -215,18 +219,4 @@ function field_generate() {
 		document.getElementById("note2").style.display = "none";
 		document.getElementById("note3").style.display = "none";
 	}
-	
-	/*
-	if(input_fields <= 0) {
-		//If less than zero input fields requested, send an error message and end prematurely.
-		document.getElementById("fields").innerHTML = "Invalid number of fields given.";
-		document.getElementById("defaults").style.display = "none";
-		document.getElementById("submit").style.display = "none";
-		document.getElementById("note1").style.display = "none";
-		document.getElementById("note2").style.display = "none";
-		document.getElementById("note3").style.display = "none";
-		return;
-	}
-	*/
-	
 }
